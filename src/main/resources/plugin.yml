@@ -1,0 +1,8 @@
+name: BlockOffhandItem
+version: '${project.version}'
+main: me.gibson.nooffhanditems.NoOffhandItems
+api-version: '1.20'
+commands:
+  blockoffhandreload:
+    description: Reload the BlockOffhandItems configuration
+    permission: blockoffhanditems.reload
