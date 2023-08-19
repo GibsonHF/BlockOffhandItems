@@ -24,14 +24,14 @@ public class OffhandListener implements Listener {
             return;
         }
 
-        Player player = (Player) event.getWhoClicked();
-        ItemStack cursorItem = event.getCursor();
-
-        if (cursorItem != null && plugin.getConfig().getStringList("blocked-items").contains(cursorItem.getType().name())) {
-            if (event.getSlot() == 40) {
+        // Check if the action is related to the off-hand slot (slot number 40)
+        if (event.getSlot() == 40) {
+            ItemStack clickedItem = event.getCursor();
+            if (clickedItem != null && plugin.getConfig().getStringList("blocked-items").contains(clickedItem.getType().name())) {
                 // Cancel the event immediately, so the item can't be moved to the offhand slot
                 event.setCancelled(true);
-                player.sendMessage("You can't put this item in your offhand!");
+                Player player = (Player) event.getWhoClicked();
+                player.sendMessage("You can't click this item in your offhand!");
             }
         }
     }
